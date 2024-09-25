@@ -15,6 +15,13 @@ public class Info extends JDialog {
         setContentPane(contentPane);
         setModal(true); // hace que no pueda pulsar fuera de la ventana
         getRootPane().setDefaultButton(buttonOK); // si le damos al ENTER, realiza el OK
+        setTitle(Session.gameSelected.getTitle());
+        setLocationRelativeTo(null);
+
+        Title.setText(Session.gameSelected.getTitle());
+        Platform.setText(Session.gameSelected.getPlatform());
+        Year.setText(String.valueOf(Session.gameSelected.getYear()));
+
         pack();
 
         buttonOK.addActionListener(new ActionListener() {

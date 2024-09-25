@@ -27,6 +27,7 @@ public class Principal extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Principal Demo");
         pack();
+        setLocationRelativeTo(null); // Centramos la ventana
 
         table1.getSelectionModel().addListSelectionListener(
             (ListSelectionEvent e) -> {
@@ -37,6 +38,11 @@ public class Principal extends JFrame{
                     var year = (Integer) model.getValueAt(table1.getSelectedRow(), 2);
 
                 System.out.println(title + " " + platform + " " + year);
+
+                Session.gameSelected = new Game (title,platform,year);
+
+                var info = new Info();
+                info.setVisible(true);
             }
         );
 
