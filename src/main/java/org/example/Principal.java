@@ -1,6 +1,8 @@
 package org.example;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 
@@ -25,6 +27,18 @@ public class Principal extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Principal Demo");
         pack();
+
+        table1.getSelectionModel().addListSelectionListener(
+            (ListSelectionEvent e) -> {
+                if(!e.getValueIsAdjusting()) return;
+                    System.out.println(table1.getSelectedRow());
+                    var title = model.getValueAt(table1.getSelectedRow(), 0).toString();
+                    var platform = model.getValueAt(table1.getSelectedRow(), 1).toString();
+                    var year = (Integer) model.getValueAt(table1.getSelectedRow(), 2);
+
+                System.out.println(title + " " + platform + " " + year);
+            }
+        );
 
         button1.addActionListener((ActionEvent e)->{
 
